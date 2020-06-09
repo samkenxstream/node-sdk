@@ -1,0 +1,25 @@
+{
+  "include": ["src", "types"],
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["esnext"],
+    "importHelpers": true,
+    "declaration": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "rootDir": "./src",
+    "strict": true,
+    "outDir": "/dev/shm",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "*": ["src/*", "node_modules/*"]
+    },
+    "esModuleInterop": true
+  }
+}
