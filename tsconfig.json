@@ -1,8 +1,8 @@
 {
   "include": ["src", "types"],
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "ESNext",
+    "module": "CommonJS",
+    "target": "ES2015",
     "lib": ["esnext"],
     "importHelpers": true,
     "declaration": true,
@@ -10,7 +10,7 @@
     "allowJs": true,
     "rootDir": "./src",
     "strict": true,
-    "outDir": "/dev/shm",
+    "outDir": "dist",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
