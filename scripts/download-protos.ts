@@ -9,7 +9,7 @@ const octokit = new Octokit({
 
 const get = async (p: string) => {
   try {
-    const response = await octokit.repos.getContents({
+    const response = await octokit.repos.getContent({
       owner: 'docker',
       repo: 'api',
       path: p,
