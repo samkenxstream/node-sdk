@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const { spawn, spawnSync } = require('child_process');
 const { ServiceError } = require('@grpc/grpc-js');
@@ -8,7 +9,10 @@ const { ListRequest, ListResponse } = require('../src/containers');
 describe('SDK', () => {
   let proc;
 
-  const cli = path.resolve('docker-linux-amd64');
+  let cli = path.resolve('docker-linux-amd64');
+  if (!fs.existsSync(cli)) {
+    cli = 'docker';
+  }
   const address = 'unix:///tmp/test.sock';
 
   beforeAll(() => {
@@ -23,14 +27,12 @@ describe('SDK', () => {
   });
 
   it('can call the backend', (done) => {
-    setTimeout(() => {
-      const client = new Containers(address);
+    const client = new Containers(address);
 
-      client.list(new ListRequest(), (error, response) => {
-        expect(error).toBeNull();
-        expect(response.getContainersList().length).toEqual(2);
-        done();
-      });
-    }, 1e3);
+    client.list(new ListRequest(), (error, response) => {
+      expect(error).toBeNull();
+      expect(response.getContainersList().length).toEqual(2);
+      done();
+    });
   });
 });

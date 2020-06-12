@@ -5,7 +5,7 @@ ENV DOCKER_GITHUB_TOKEN=${DOCKER_GITHUB_TOKEN}
 COPY package.json .
 COPY yarn.lock .
 
-RUN --mount=type=cache,target=cache \
+RUN --mount=type=cache,target=/usr/local/share/.cache/yarn/v6 \
     yarn install --frozen-lockfile
 
 COPY . .

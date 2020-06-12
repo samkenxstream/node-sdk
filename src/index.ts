@@ -6,7 +6,7 @@ import { ContextsClient } from './protos/contexts/v1/contexts_grpc_pb';
 import { ComposeClient } from './protos/compose/v1/compose_grpc_pb';
 import { StreamingClient } from './protos/streams/v1/streams_grpc_pb';
 
-let addr = 'unix:///./pipe/dockerCliApi';
+let addr = 'unix:////./pipe/dockerCliApi';
 if (os.platform() !== 'win32') {
   const homeDir = os.homedir();
   addr = `unix://${homeDir}/Library/Containers/com.docker.docker/Data/docker-cli-api.sock`;
