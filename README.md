@@ -9,7 +9,49 @@ can find the NPM module [here](https://xxx).
 
 ## Getting started
 
-<!-- FIXME(chris-crone): Add usage instructions -->
+Add `node-sdk` to the dependencies 
+
+```console
+yarn add git+https://github.com/docker/node-sdk.git
+```
+
+You can then use the SDK:
+
+```typescript
+// import the contexts client
+import { Contexts } from "@docker/sdk";
+// Import the request/response types for contexts.
+// Note: While this is not released on npm you will need to import these
+// as `@docker/sdk/dist/contexts`. Once the library is released the import path
+// will be `@docker/sdk/contexts`.
+import {
+  ListRequest,
+  ListResponse,
+} from "@docker/sdk/dist/contexts";
+
+const client = new Contexts();
+
+// Get the list of contexts
+client.list(new ListRequest(), (err: any, resp: ListResponse) => {
+    if (err) {
+        rej(err);
+    }
+
+    const contexts = resp
+        .getContextsList()
+        .map((c) => new Context(c.getName()));
+
+    res(contexts);
+});
+```
+
+When you run this code you should see a list of contexts, for example:
+
+```console
+$ ts-node example.ts
+aci-context
+default
+```
 
 ## Examples
 
