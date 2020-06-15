@@ -34,14 +34,15 @@ const client = new Contexts();
 // Get the list of contexts
 client.list(new ListRequest(), (err: any, resp: ListResponse) => {
     if (err) {
-        rej(err);
+        console.error(err);
+        return;
     }
 
     const contexts = resp
         .getContextsList()
         .map((c) => new Context(c.getName()));
 
-    res(contexts);
+    console.log(contexts);
 });
 ```
 
