@@ -7,10 +7,12 @@ This folder contains examples of how to use the Docker CLI JavaScript SDK.
 * [Node.js 10 or later](https://nodejs.org/en/download/)
 * [yarn](https://yarnpkg.com/getting-started/install)
 
-To run the examples you will need to have the Docker CLI API server running. You
-can do this by running:
+To run the examples you will need to have an ACI context as default and the
+Docker CLI API server running. You can do this by running:
 
 ```console
+$ docker context create aci-context aci
+$ docker context use aci-context
 $ docker serve --address unix:///tmp/backend.sock
 ```
 
