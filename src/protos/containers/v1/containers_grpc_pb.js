@@ -2,30 +2,19 @@
 
 // Original file comments:
 //
-// Copyright (c) 2020 Docker Inc.
+//  Copyright 2020 Docker, Inc.
 //
-// Permission is hereby granted, free of charge, to any person
-// obtaining a copy of this software and associated documentation
-// files (the "Software"), to deal in the Software without
-// restriction, including without limitation the rights to use, copy,
-// modify, merge, publish, distribute, sublicense, and/or sell copies
-// of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
 //
-// The above copyright notice and this permission notice shall be
-// included in all copies or substantial portions of the Software.
+//      http://www.apache.org/licenses/LICENSE-2.0
 //
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED,
-// INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-// IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-// HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY,
-// WHETHER IN AN ACTION OF CONTRACT,
-// TORT OR OTHERWISE,
-// ARISING FROM, OUT OF OR IN CONNECTION WITH
-// THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 'use strict';
 var grpc = require('@grpc/grpc-js');
@@ -73,6 +62,28 @@ function serialize_com_docker_api_protos_containers_v1_ExecResponse(arg) {
 
 function deserialize_com_docker_api_protos_containers_v1_ExecResponse(buffer_arg) {
   return containers_v1_containers_pb.ExecResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_com_docker_api_protos_containers_v1_InspectRequest(arg) {
+  if (!(arg instanceof containers_v1_containers_pb.InspectRequest)) {
+    throw new Error('Expected argument of type com.docker.api.protos.containers.v1.InspectRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_com_docker_api_protos_containers_v1_InspectRequest(buffer_arg) {
+  return containers_v1_containers_pb.InspectRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_com_docker_api_protos_containers_v1_InspectResponse(arg) {
+  if (!(arg instanceof containers_v1_containers_pb.InspectResponse)) {
+    throw new Error('Expected argument of type com.docker.api.protos.containers.v1.InspectResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_com_docker_api_protos_containers_v1_InspectResponse(buffer_arg) {
+  return containers_v1_containers_pb.InspectResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_com_docker_api_protos_containers_v1_ListRequest(arg) {
@@ -230,6 +241,17 @@ var ContainersService = exports.ContainersService = {
     requestDeserialize: deserialize_com_docker_api_protos_containers_v1_DeleteRequest,
     responseSerialize: serialize_com_docker_api_protos_containers_v1_DeleteResponse,
     responseDeserialize: deserialize_com_docker_api_protos_containers_v1_DeleteResponse,
+  },
+  inspect: {
+    path: '/com.docker.api.protos.containers.v1.Containers/Inspect',
+    requestStream: false,
+    responseStream: false,
+    requestType: containers_v1_containers_pb.InspectRequest,
+    responseType: containers_v1_containers_pb.InspectResponse,
+    requestSerialize: serialize_com_docker_api_protos_containers_v1_InspectRequest,
+    requestDeserialize: deserialize_com_docker_api_protos_containers_v1_InspectRequest,
+    responseSerialize: serialize_com_docker_api_protos_containers_v1_InspectResponse,
+    responseDeserialize: deserialize_com_docker_api_protos_containers_v1_InspectResponse,
   },
 };
 

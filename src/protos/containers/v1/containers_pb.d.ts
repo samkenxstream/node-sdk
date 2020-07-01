@@ -77,6 +77,9 @@ export class Container extends jspb.Message {
     setPortsList(value: Array<Port>): Container;
     addPorts(value?: Port, index?: number): Port;
 
+    getCpuLimit(): number;
+    setCpuLimit(value: number): Container;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Container.AsObject;
@@ -101,6 +104,52 @@ export namespace Container {
         pidsLimit: number,
         labelsList: Array<string>,
         portsList: Array<Port.AsObject>,
+        cpuLimit: number,
+    }
+}
+
+export class InspectRequest extends jspb.Message { 
+    getId(): string;
+    setId(value: string): InspectRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): InspectRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: InspectRequest): InspectRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: InspectRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): InspectRequest;
+    static deserializeBinaryFromReader(message: InspectRequest, reader: jspb.BinaryReader): InspectRequest;
+}
+
+export namespace InspectRequest {
+    export type AsObject = {
+        id: string,
+    }
+}
+
+export class InspectResponse extends jspb.Message { 
+
+    hasContainer(): boolean;
+    clearContainer(): void;
+    getContainer(): Container | undefined;
+    setContainer(value?: Container): InspectResponse;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): InspectResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: InspectResponse): InspectResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: InspectResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): InspectResponse;
+    static deserializeBinaryFromReader(message: InspectResponse, reader: jspb.BinaryReader): InspectResponse;
+}
+
+export namespace InspectResponse {
+    export type AsObject = {
+        container?: Container.AsObject,
     }
 }
 
@@ -209,6 +258,12 @@ export class RunRequest extends jspb.Message {
     setVolumesList(value: Array<string>): RunRequest;
     addVolumes(value: string, index?: number): string;
 
+    getMemoryLimit(): number;
+    setMemoryLimit(value: number): RunRequest;
+
+    getCpuLimit(): number;
+    setCpuLimit(value: number): RunRequest;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RunRequest.AsObject;
@@ -228,6 +283,8 @@ export namespace RunRequest {
 
         labelsMap: Array<[string, string]>,
         volumesList: Array<string>,
+        memoryLimit: number,
+        cpuLimit: number,
     }
 }
 

@@ -15,8 +15,8 @@ interface IContextsService extends grpc.ServiceDefinition<grpc.UntypedServiceImp
 
 interface IContextsService_ISetCurrent extends grpc.MethodDefinition<contexts_v1_contexts_pb.SetCurrentRequest, contexts_v1_contexts_pb.SetCurrentResponse> {
     path: string; // "/com.docker.api.protos.context.v1.Contexts/SetCurrent"
-    requestStream: boolean; // false
-    responseStream: boolean; // false
+    requestStream: false;
+    responseStream: false;
     requestSerialize: grpc.serialize<contexts_v1_contexts_pb.SetCurrentRequest>;
     requestDeserialize: grpc.deserialize<contexts_v1_contexts_pb.SetCurrentRequest>;
     responseSerialize: grpc.serialize<contexts_v1_contexts_pb.SetCurrentResponse>;
@@ -24,8 +24,8 @@ interface IContextsService_ISetCurrent extends grpc.MethodDefinition<contexts_v1
 }
 interface IContextsService_IList extends grpc.MethodDefinition<contexts_v1_contexts_pb.ListRequest, contexts_v1_contexts_pb.ListResponse> {
     path: string; // "/com.docker.api.protos.context.v1.Contexts/List"
-    requestStream: boolean; // false
-    responseStream: boolean; // false
+    requestStream: false;
+    responseStream: false;
     requestSerialize: grpc.serialize<contexts_v1_contexts_pb.ListRequest>;
     requestDeserialize: grpc.deserialize<contexts_v1_contexts_pb.ListRequest>;
     responseSerialize: grpc.serialize<contexts_v1_contexts_pb.ListResponse>;
