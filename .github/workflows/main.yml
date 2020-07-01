@@ -21,6 +21,12 @@ jobs:
           restore-keys: |
             nodeModules-
 
+      - name: Link docker command line
+        run: ln -s $(which docker) /tmp/com.docker.cli
+
+      - name: Add cli to path
+        run: echo "::add-path::/tmp"
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
         env:

@@ -15,12 +15,13 @@ interface IContainersService extends grpc.ServiceDefinition<grpc.UntypedServiceI
     exec: IContainersService_IExec;
     logs: IContainersService_ILogs;
     delete: IContainersService_IDelete;
+    inspect: IContainersService_IInspect;
 }
 
 interface IContainersService_IList extends grpc.MethodDefinition<containers_v1_containers_pb.ListRequest, containers_v1_containers_pb.ListResponse> {
     path: string; // "/com.docker.api.protos.containers.v1.Containers/List"
-    requestStream: boolean; // false
-    responseStream: boolean; // false
+    requestStream: false;
+    responseStream: false;
     requestSerialize: grpc.serialize<containers_v1_containers_pb.ListRequest>;
     requestDeserialize: grpc.deserialize<containers_v1_containers_pb.ListRequest>;
     responseSerialize: grpc.serialize<containers_v1_containers_pb.ListResponse>;
@@ -28,8 +29,8 @@ interface IContainersService_IList extends grpc.MethodDefinition<containers_v1_c
 }
 interface IContainersService_IStop extends grpc.MethodDefinition<containers_v1_containers_pb.StopRequest, containers_v1_containers_pb.StopResponse> {
     path: string; // "/com.docker.api.protos.containers.v1.Containers/Stop"
-    requestStream: boolean; // false
-    responseStream: boolean; // false
+    requestStream: false;
+    responseStream: false;
     requestSerialize: grpc.serialize<containers_v1_containers_pb.StopRequest>;
     requestDeserialize: grpc.deserialize<containers_v1_containers_pb.StopRequest>;
     responseSerialize: grpc.serialize<containers_v1_containers_pb.StopResponse>;
@@ -37,8 +38,8 @@ interface IContainersService_IStop extends grpc.MethodDefinition<containers_v1_c
 }
 interface IContainersService_IRun extends grpc.MethodDefinition<containers_v1_containers_pb.RunRequest, containers_v1_containers_pb.RunResponse> {
     path: string; // "/com.docker.api.protos.containers.v1.Containers/Run"
-    requestStream: boolean; // false
-    responseStream: boolean; // false
+    requestStream: false;
+    responseStream: false;
     requestSerialize: grpc.serialize<containers_v1_containers_pb.RunRequest>;
     requestDeserialize: grpc.deserialize<containers_v1_containers_pb.RunRequest>;
     responseSerialize: grpc.serialize<containers_v1_containers_pb.RunResponse>;
@@ -46,8 +47,8 @@ interface IContainersService_IRun extends grpc.MethodDefinition<containers_v1_co
 }
 interface IContainersService_IExec extends grpc.MethodDefinition<containers_v1_containers_pb.ExecRequest, containers_v1_containers_pb.ExecResponse> {
     path: string; // "/com.docker.api.protos.containers.v1.Containers/Exec"
-    requestStream: boolean; // false
-    responseStream: boolean; // false
+    requestStream: false;
+    responseStream: false;
     requestSerialize: grpc.serialize<containers_v1_containers_pb.ExecRequest>;
     requestDeserialize: grpc.deserialize<containers_v1_containers_pb.ExecRequest>;
     responseSerialize: grpc.serialize<containers_v1_containers_pb.ExecResponse>;
@@ -55,8 +56,8 @@ interface IContainersService_IExec extends grpc.MethodDefinition<containers_v1_c
 }
 interface IContainersService_ILogs extends grpc.MethodDefinition<containers_v1_containers_pb.LogsRequest, containers_v1_containers_pb.LogsResponse> {
     path: string; // "/com.docker.api.protos.containers.v1.Containers/Logs"
-    requestStream: boolean; // false
-    responseStream: boolean; // true
+    requestStream: false;
+    responseStream: true;
     requestSerialize: grpc.serialize<containers_v1_containers_pb.LogsRequest>;
     requestDeserialize: grpc.deserialize<containers_v1_containers_pb.LogsRequest>;
     responseSerialize: grpc.serialize<containers_v1_containers_pb.LogsResponse>;
@@ -64,12 +65,21 @@ interface IContainersService_ILogs extends grpc.MethodDefinition<containers_v1_c
 }
 interface IContainersService_IDelete extends grpc.MethodDefinition<containers_v1_containers_pb.DeleteRequest, containers_v1_containers_pb.DeleteResponse> {
     path: string; // "/com.docker.api.protos.containers.v1.Containers/Delete"
-    requestStream: boolean; // false
-    responseStream: boolean; // false
+    requestStream: false;
+    responseStream: false;
     requestSerialize: grpc.serialize<containers_v1_containers_pb.DeleteRequest>;
     requestDeserialize: grpc.deserialize<containers_v1_containers_pb.DeleteRequest>;
     responseSerialize: grpc.serialize<containers_v1_containers_pb.DeleteResponse>;
     responseDeserialize: grpc.deserialize<containers_v1_containers_pb.DeleteResponse>;
+}
+interface IContainersService_IInspect extends grpc.MethodDefinition<containers_v1_containers_pb.InspectRequest, containers_v1_containers_pb.InspectResponse> {
+    path: string; // "/com.docker.api.protos.containers.v1.Containers/Inspect"
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<containers_v1_containers_pb.InspectRequest>;
+    requestDeserialize: grpc.deserialize<containers_v1_containers_pb.InspectRequest>;
+    responseSerialize: grpc.serialize<containers_v1_containers_pb.InspectResponse>;
+    responseDeserialize: grpc.deserialize<containers_v1_containers_pb.InspectResponse>;
 }
 
 export const ContainersService: IContainersService;
@@ -81,6 +91,7 @@ export interface IContainersServer {
     exec: grpc.handleUnaryCall<containers_v1_containers_pb.ExecRequest, containers_v1_containers_pb.ExecResponse>;
     logs: grpc.handleServerStreamingCall<containers_v1_containers_pb.LogsRequest, containers_v1_containers_pb.LogsResponse>;
     delete: grpc.handleUnaryCall<containers_v1_containers_pb.DeleteRequest, containers_v1_containers_pb.DeleteResponse>;
+    inspect: grpc.handleUnaryCall<containers_v1_containers_pb.InspectRequest, containers_v1_containers_pb.InspectResponse>;
 }
 
 export interface IContainersClient {
@@ -101,6 +112,9 @@ export interface IContainersClient {
     delete(request: containers_v1_containers_pb.DeleteRequest, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.DeleteResponse) => void): grpc.ClientUnaryCall;
     delete(request: containers_v1_containers_pb.DeleteRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.DeleteResponse) => void): grpc.ClientUnaryCall;
     delete(request: containers_v1_containers_pb.DeleteRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.DeleteResponse) => void): grpc.ClientUnaryCall;
+    inspect(request: containers_v1_containers_pb.InspectRequest, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.InspectResponse) => void): grpc.ClientUnaryCall;
+    inspect(request: containers_v1_containers_pb.InspectRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.InspectResponse) => void): grpc.ClientUnaryCall;
+    inspect(request: containers_v1_containers_pb.InspectRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.InspectResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class ContainersClient extends grpc.Client implements IContainersClient {
@@ -122,4 +136,7 @@ export class ContainersClient extends grpc.Client implements IContainersClient {
     public delete(request: containers_v1_containers_pb.DeleteRequest, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.DeleteResponse) => void): grpc.ClientUnaryCall;
     public delete(request: containers_v1_containers_pb.DeleteRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.DeleteResponse) => void): grpc.ClientUnaryCall;
     public delete(request: containers_v1_containers_pb.DeleteRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.DeleteResponse) => void): grpc.ClientUnaryCall;
+    public inspect(request: containers_v1_containers_pb.InspectRequest, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.InspectResponse) => void): grpc.ClientUnaryCall;
+    public inspect(request: containers_v1_containers_pb.InspectRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.InspectResponse) => void): grpc.ClientUnaryCall;
+    public inspect(request: containers_v1_containers_pb.InspectRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.InspectResponse) => void): grpc.ClientUnaryCall;
 }

@@ -15,8 +15,8 @@ interface IComposeService extends grpc.ServiceDefinition<grpc.UntypedServiceImpl
 
 interface IComposeService_IUp extends grpc.MethodDefinition<compose_v1_compose_pb.ComposeUpRequest, compose_v1_compose_pb.ComposeUpResponse> {
     path: string; // "/com.docker.api.protos.compose.v1.Compose/Up"
-    requestStream: boolean; // false
-    responseStream: boolean; // false
+    requestStream: false;
+    responseStream: false;
     requestSerialize: grpc.serialize<compose_v1_compose_pb.ComposeUpRequest>;
     requestDeserialize: grpc.deserialize<compose_v1_compose_pb.ComposeUpRequest>;
     responseSerialize: grpc.serialize<compose_v1_compose_pb.ComposeUpResponse>;
@@ -24,8 +24,8 @@ interface IComposeService_IUp extends grpc.MethodDefinition<compose_v1_compose_p
 }
 interface IComposeService_IDown extends grpc.MethodDefinition<compose_v1_compose_pb.ComposeDownRequest, compose_v1_compose_pb.ComposeDownResponse> {
     path: string; // "/com.docker.api.protos.compose.v1.Compose/Down"
-    requestStream: boolean; // false
-    responseStream: boolean; // false
+    requestStream: false;
+    responseStream: false;
     requestSerialize: grpc.serialize<compose_v1_compose_pb.ComposeDownRequest>;
     requestDeserialize: grpc.deserialize<compose_v1_compose_pb.ComposeDownRequest>;
     responseSerialize: grpc.serialize<compose_v1_compose_pb.ComposeDownResponse>;

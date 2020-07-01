@@ -15,8 +15,8 @@ interface IStreamingService extends grpc.ServiceDefinition<grpc.UntypedServiceIm
 
 interface IStreamingService_INewStream extends grpc.MethodDefinition<google_protobuf_any_pb.Any, google_protobuf_any_pb.Any> {
     path: string; // "/com.docker.api.protos.streams.v1.Streaming/NewStream"
-    requestStream: boolean; // true
-    responseStream: boolean; // true
+    requestStream: true;
+    responseStream: true;
     requestSerialize: grpc.serialize<google_protobuf_any_pb.Any>;
     requestDeserialize: grpc.deserialize<google_protobuf_any_pb.Any>;
     responseSerialize: grpc.serialize<google_protobuf_any_pb.Any>;
