@@ -2,7 +2,7 @@
 
 // Original file comments:
 //
-//  Copyright 2020 Docker, Inc.
+//  Copyright 2020 The Authors
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -22,52 +22,71 @@ var contexts_v1_contexts_pb = require('../../contexts/v1/contexts_pb.js');
 
 function serialize_com_docker_api_protos_context_v1_ListRequest(arg) {
   if (!(arg instanceof contexts_v1_contexts_pb.ListRequest)) {
-    throw new Error('Expected argument of type com.docker.api.protos.context.v1.ListRequest');
+    throw new Error(
+      'Expected argument of type com.docker.api.protos.context.v1.ListRequest'
+    );
   }
   return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_com_docker_api_protos_context_v1_ListRequest(buffer_arg) {
-  return contexts_v1_contexts_pb.ListRequest.deserializeBinary(new Uint8Array(buffer_arg));
+  return contexts_v1_contexts_pb.ListRequest.deserializeBinary(
+    new Uint8Array(buffer_arg)
+  );
 }
 
 function serialize_com_docker_api_protos_context_v1_ListResponse(arg) {
   if (!(arg instanceof contexts_v1_contexts_pb.ListResponse)) {
-    throw new Error('Expected argument of type com.docker.api.protos.context.v1.ListResponse');
+    throw new Error(
+      'Expected argument of type com.docker.api.protos.context.v1.ListResponse'
+    );
   }
   return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_com_docker_api_protos_context_v1_ListResponse(buffer_arg) {
-  return contexts_v1_contexts_pb.ListResponse.deserializeBinary(new Uint8Array(buffer_arg));
+  return contexts_v1_contexts_pb.ListResponse.deserializeBinary(
+    new Uint8Array(buffer_arg)
+  );
 }
 
 function serialize_com_docker_api_protos_context_v1_SetCurrentRequest(arg) {
   if (!(arg instanceof contexts_v1_contexts_pb.SetCurrentRequest)) {
-    throw new Error('Expected argument of type com.docker.api.protos.context.v1.SetCurrentRequest');
+    throw new Error(
+      'Expected argument of type com.docker.api.protos.context.v1.SetCurrentRequest'
+    );
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_com_docker_api_protos_context_v1_SetCurrentRequest(buffer_arg) {
-  return contexts_v1_contexts_pb.SetCurrentRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_com_docker_api_protos_context_v1_SetCurrentRequest(
+  buffer_arg
+) {
+  return contexts_v1_contexts_pb.SetCurrentRequest.deserializeBinary(
+    new Uint8Array(buffer_arg)
+  );
 }
 
 function serialize_com_docker_api_protos_context_v1_SetCurrentResponse(arg) {
   if (!(arg instanceof contexts_v1_contexts_pb.SetCurrentResponse)) {
-    throw new Error('Expected argument of type com.docker.api.protos.context.v1.SetCurrentResponse');
+    throw new Error(
+      'Expected argument of type com.docker.api.protos.context.v1.SetCurrentResponse'
+    );
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_com_docker_api_protos_context_v1_SetCurrentResponse(buffer_arg) {
-  return contexts_v1_contexts_pb.SetCurrentResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_com_docker_api_protos_context_v1_SetCurrentResponse(
+  buffer_arg
+) {
+  return contexts_v1_contexts_pb.SetCurrentResponse.deserializeBinary(
+    new Uint8Array(buffer_arg)
+  );
 }
 
-
-var ContextsService = exports.ContextsService = {
+var ContextsService = (exports.ContextsService = {
   // Sets the current request for all calls
-setCurrent: {
+  setCurrent: {
     path: '/com.docker.api.protos.context.v1.Contexts/SetCurrent',
     requestStream: false,
     responseStream: false,
@@ -79,7 +98,7 @@ setCurrent: {
     responseDeserialize: deserialize_com_docker_api_protos_context_v1_SetCurrentResponse,
   },
   // Returns the list of existing contexts
-list: {
+  list: {
     path: '/com.docker.api.protos.context.v1.Contexts/List',
     requestStream: false,
     responseStream: false,
@@ -90,6 +109,6 @@ list: {
     responseSerialize: serialize_com_docker_api_protos_context_v1_ListResponse,
     responseDeserialize: deserialize_com_docker_api_protos_context_v1_ListResponse,
   },
-};
+});
 
 exports.ContextsClient = grpc.makeGenericClientConstructor(ContextsService);

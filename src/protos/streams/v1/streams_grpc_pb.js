@@ -2,7 +2,7 @@
 
 // Original file comments:
 //
-//  Copyright 2020 Docker, Inc.
+//  Copyright 2020 The Authors
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -29,11 +29,12 @@ function serialize_google_protobuf_Any(arg) {
 }
 
 function deserialize_google_protobuf_Any(buffer_arg) {
-  return google_protobuf_any_pb.Any.deserializeBinary(new Uint8Array(buffer_arg));
+  return google_protobuf_any_pb.Any.deserializeBinary(
+    new Uint8Array(buffer_arg)
+  );
 }
 
-
-var StreamingService = exports.StreamingService = {
+var StreamingService = (exports.StreamingService = {
   newStream: {
     path: '/com.docker.api.protos.streams.v1.Streaming/NewStream',
     requestStream: true,
@@ -45,6 +46,6 @@ var StreamingService = exports.StreamingService = {
     responseSerialize: serialize_google_protobuf_Any,
     responseDeserialize: deserialize_google_protobuf_Any,
   },
-};
+});
 
 exports.StreamingClient = grpc.makeGenericClientConstructor(StreamingService);
