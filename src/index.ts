@@ -25,7 +25,7 @@ import { StreamingClient } from './protos/streams/v1/streams_grpc_pb';
 let addr = 'unix:////./pipe/dockerCliApi';
 if (platform() !== 'win32') {
   const homeDir = homedir();
-  addr = `unix://${homeDir}/Library/Containers/com.docker.docker/Data/docker-cli-api.sock`;
+  addr = `unix://${homeDir}/.docker/run/docker-cli-api.sock`;
 }
 export class Containers extends ContainersClient {
   constructor(address: string = addr) {
