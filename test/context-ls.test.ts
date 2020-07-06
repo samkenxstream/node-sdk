@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
 
-import { Contexts } from '../dist';
-import { ListRequest, ListResponse } from '../dist/contexts';
+import { Contexts } from '../src';
+import { ListRequest, ListResponse } from '../src/contexts';
 import { ServiceError } from '@grpc/grpc-js';
 
 describe('SDK', () => {
