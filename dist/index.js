@@ -25,7 +25,7 @@ const streams_grpc_pb_1 = require("./protos/streams/v1/streams_grpc_pb");
 let addr = 'unix:////./pipe/dockerCliApi';
 if (os_1.platform() !== 'win32') {
     const homeDir = os_1.homedir();
-    addr = `unix://${homeDir}/Library/Containers/com.docker.docker/Data/docker-cli-api.sock`;
+    addr = `unix://${homeDir}/.docker/run/docker-cli-api.sock`;
 }
 class Containers extends containers_grpc_pb_1.ContainersClient {
     constructor(address = addr) {
