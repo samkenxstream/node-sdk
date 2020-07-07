@@ -1,24 +1,20 @@
 {
   "version": "0.1.0",
   "license": "Apache-2.0",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist/**/*"
-  ],
+  "main": "index.js",
+  "typings": "index.d.ts",
   "engines": {
     "node": ">=10"
   },
   "scripts": {
     "start": "rollup -w -c",
-    "build": "tsc && yarn move-protos",
-    "prepublish": "yarn build",
-    "move-protos": "cp -r src/protos dist",
+    "build": "tsc",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint src --ext .ts",
     "download-protos": "ts-node scripts/download-protos.ts",
     "download-cli": "ts-node scripts/download-cli.ts",
+    "copy": "cp -f package.json src",
     "example": "ts-node"
   },
   "prettier": {

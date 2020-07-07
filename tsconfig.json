@@ -1,5 +1,6 @@
 {
-  "include": ["src", "types"],
+  "include": ["src"],
+  "exclude": ["src/protos"],
   "compilerOptions": {
     "module": "CommonJS",
     "target": "ES2015",
@@ -10,7 +11,6 @@
     "allowJs": true,
     "rootDir": "./src",
     "strict": true,
-    "outDir": "dist",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
