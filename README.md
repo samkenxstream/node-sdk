@@ -33,7 +33,7 @@ client.list(new ListRequest(), (err: any, resp: ListResponse) => {
     return;
   }
 
-  const contexts = resp.getContextsList().map((c) => new Context(c.getName()));
+  const contexts = resp.getContextsList().map((c) => c.getName());
 
   console.log(contexts);
 });
