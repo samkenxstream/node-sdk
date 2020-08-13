@@ -1,18 +1,17 @@
-/*
-   Copyright 2020 The Authors
+//
+//  Copyright 2020 Docker, Inc.
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
+//      http://www.apache.org/licenses/LICENSE-2.0
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-*/
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 
 syntax = "proto3";
 
@@ -22,6 +21,7 @@ option go_package = "github.com/docker/api/protos/containers/v1;v1";
 
 service Containers {
 	rpc List(ListRequest) returns (ListResponse);
+	rpc Start(StartRequest) returns (StartResponse);
 	rpc Stop(StopRequest) returns (StopResponse);
 	rpc Run(RunRequest) returns (RunResponse);
 	rpc Exec(ExecRequest) returns (ExecResponse);
@@ -50,6 +50,8 @@ message Container {
 	repeated string labels = 10;
 	repeated Port ports = 11;
 	uint64 cpu_limit = 12;
+	string platform = 13;
+	string restart_policy_condition = 14;
 }
 
 message InspectRequest {
@@ -68,6 +70,13 @@ message DeleteRequest {
 message DeleteResponse {
 }
 
+message StartRequest {
+	string id = 1;
+}
+
+message StartResponse {
+}
+
 message StopRequest {
 	string id = 1;
 	uint32 timeout = 2;
@@ -84,6 +93,7 @@ message RunRequest {
 	repeated string volumes = 5;
 	uint64 memory_limit = 6;
 	uint64 cpu_limit = 7;
+	string restart_policy_condition= 8;
 }
 
 message RunResponse {

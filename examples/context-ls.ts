@@ -16,8 +16,8 @@
 
 import * as grpc from '@grpc/grpc-js';
 
-import { ListRequest, ListResponse } from '../src/contexts';
 import { Contexts } from '../src';
+import { ListRequest, ListResponse } from '../src/contexts';
 
 const client = new Contexts();
 client.list(

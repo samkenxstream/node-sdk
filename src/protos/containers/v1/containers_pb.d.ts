@@ -80,6 +80,12 @@ export class Container extends jspb.Message {
     getCpuLimit(): number;
     setCpuLimit(value: number): Container;
 
+    getPlatform(): string;
+    setPlatform(value: string): Container;
+
+    getRestartPolicyCondition(): string;
+    setRestartPolicyCondition(value: string): Container;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Container.AsObject;
@@ -105,6 +111,8 @@ export namespace Container {
         labelsList: Array<string>,
         portsList: Array<Port.AsObject>,
         cpuLimit: number,
+        platform: string,
+        restartPolicyCondition: string,
     }
 }
 
@@ -195,6 +203,44 @@ export namespace DeleteResponse {
     }
 }
 
+export class StartRequest extends jspb.Message { 
+    getId(): string;
+    setId(value: string): StartRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): StartRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: StartRequest): StartRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: StartRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): StartRequest;
+    static deserializeBinaryFromReader(message: StartRequest, reader: jspb.BinaryReader): StartRequest;
+}
+
+export namespace StartRequest {
+    export type AsObject = {
+        id: string,
+    }
+}
+
+export class StartResponse extends jspb.Message { 
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): StartResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: StartResponse): StartResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: StartResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): StartResponse;
+    static deserializeBinaryFromReader(message: StartResponse, reader: jspb.BinaryReader): StartResponse;
+}
+
+export namespace StartResponse {
+    export type AsObject = {
+    }
+}
+
 export class StopRequest extends jspb.Message { 
     getId(): string;
     setId(value: string): StopRequest;
@@ -264,6 +310,9 @@ export class RunRequest extends jspb.Message {
     getCpuLimit(): number;
     setCpuLimit(value: number): RunRequest;
 
+    getRestartPolicyCondition(): string;
+    setRestartPolicyCondition(value: string): RunRequest;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RunRequest.AsObject;
@@ -285,6 +334,7 @@ export namespace RunRequest {
         volumesList: Array<string>,
         memoryLimit: number,
         cpuLimit: number,
+        restartPolicyCondition: string,
     }
 }
 
