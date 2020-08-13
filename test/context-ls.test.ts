@@ -24,14 +24,16 @@ describe('SDK', () => {
   });
 
   it('can call the backend', (done) => {
-    const client = new Contexts(address);
-    client.list(
-      new ListRequest(),
-      (error: ServiceError, response: ListResponse) => {
-        expect(error).toBeNull();
-        expect(response.getContextsList().length).toBeGreaterThan(0);
-        done();
-      }
-    );
+    setTimeout(() => {
+      const client = new Contexts(address);
+      client.list(
+        new ListRequest(),
+        (error: ServiceError, response: ListResponse) => {
+          expect(error).toBeNull();
+          expect(response.getContextsList().length).toBeGreaterThan(0);
+          done();
+        }
+      );
+    }, 1000);
   });
 });

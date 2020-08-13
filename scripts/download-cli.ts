@@ -23,6 +23,8 @@ const download = async () => {
 
   const latestRelease = latestReleases.data[0];
 
+  console.log(`Fount release ${latestRelease.name}`);
+
   const linuxAsset = latestRelease.assets.find(
     (asset) => asset.name == 'docker-linux-amd64'
   );
