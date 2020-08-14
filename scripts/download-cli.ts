@@ -12,7 +12,7 @@ const download = async () => {
 
   const latestReleases = await octokit.repos.listReleases({
     owner: 'docker',
-    repo: 'api',
+    repo: 'compose-cli',
     page: 1,
     per_page: 1,
   });
@@ -38,7 +38,7 @@ const download = async () => {
       Accept: 'application/octet-stream',
     },
     owner: 'docker',
-    repo: 'api',
+    repo: 'compose-cli',
     asset_id: linuxAsset.id,
     access_token: process.env.DOCKER_GITHUB_TOKEN,
   });
