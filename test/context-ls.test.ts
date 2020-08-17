@@ -15,8 +15,12 @@ describe('SDK', () => {
   }
   const address = 'unix:///tmp/test.sock';
 
-  beforeAll(() => {
+  beforeAll((done) => {
     proc = spawn(cli, ['serve', '--address', address]);
+    // Wait for the server to print that it's listening.
+    proc.stderr.on('data', () => {
+      done();
+    });
   });
 
   afterAll(() => {
@@ -24,16 +28,14 @@ describe('SDK', () => {
   });
 
   it('can call the backend', (done) => {
-    setTimeout(() => {
-      const client = new Contexts(address);
-      client.list(
-        new ListRequest(),
-        (error: ServiceError, response: ListResponse) => {
-          expect(error).toBeNull();
-          expect(response.getContextsList().length).toBeGreaterThan(0);
-          done();
-        }
-      );
-    }, 1000);
+    const client = new Contexts(address);
+    client.list(
+      new ListRequest(),
+      (error: ServiceError, response: ListResponse) => {
+        expect(error).toBeNull();
+        expect(response.getContextsList().length).toBeGreaterThan(0);
+        done();
+      }
+    );
   });
 });
