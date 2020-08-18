@@ -23,7 +23,7 @@ const download = async () => {
 
   const latestRelease = latestReleases.data[0];
 
-  console.log(`Fount release ${latestRelease.name}`);
+  console.log(`Found release ${latestRelease.name}`);
 
   const linuxAsset = latestRelease.assets.find(
     (asset) => asset.name == 'docker-linux-amd64'
@@ -45,12 +45,13 @@ const download = async () => {
 
   const response = await request(options);
 
-  const zipPath = linuxAsset.name;
-  const file = fs.createWriteStream(zipPath);
+  const binPath = linuxAsset.name;
+  const file = fs.createWriteStream(binPath);
 
   file.write(Buffer.from(response.data));
-  file.end();
-  fs.chmodSync(path.resolve(zipPath), 755);
+  file.end(() => {
+    fs.chmodSync(path.resolve(binPath), 755);
+  });
 };
 
 (async function () {
