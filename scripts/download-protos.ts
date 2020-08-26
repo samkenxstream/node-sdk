@@ -12,7 +12,6 @@ const get = async (p: string) => {
     const response = await octokit.repos.getContent({
       owner: 'docker',
       repo: 'compose-cli',
-      ref: 'repo-rename',
       path: p,
     });
     if (Array.isArray(response.data)) {
