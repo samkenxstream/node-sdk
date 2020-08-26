@@ -4,14 +4,14 @@ import { Readable } from 'stream';
 import { Octokit } from '@octokit/rest';
 
 const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN,
+  auth: process.env.DOCKER_GITHUB_TOKEN,
 });
 
 const get = async (p: string) => {
   try {
     const response = await octokit.repos.getContent({
       owner: 'docker',
-      repo: 'api',
+      repo: 'compose-cli',
       path: p,
     });
     if (Array.isArray(response.data)) {
