@@ -2,6 +2,7 @@
 
 set -e
 
+yarn install
 yarn build
 yarn run copy
 cd src
