@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as tar from 'tar';
 import { Octokit } from '@octokit/rest';
 const { request } = require('@octokit/request');
 
@@ -26,7 +27,7 @@ const download = async () => {
   console.log(`Found release ${latestRelease.name}`);
 
   const linuxAsset = latestRelease.assets.find(
-    (asset) => asset.name == 'docker-linux-amd64'
+    (asset) => asset.name == 'docker-linux-amd64.tar.gz'
   );
 
   if (!linuxAsset) {
@@ -45,12 +46,23 @@ const download = async () => {
 
   const response = await request(options);
 
-  const binPath = linuxAsset.name;
-  const file = fs.createWriteStream(binPath);
+  const binPath = "docker";
+  const tarPath = linuxAsset.name;
+  const file = fs.createWriteStream(tarPath);
 
   file.write(Buffer.from(response.data));
+  console.log(`downloaded ${tarPath}`);
   file.end(() => {
-    fs.chmodSync(path.resolve(binPath), 755);
+    tar.x(
+      {
+          file: tarPath,
+          strip:1
+      },
+    ).then(() => {
+      console.log(`extracted ${tarPath}`);
+      fs.chmodSync(path.resolve(binPath), 755);
+      console.log(`updated ${binPath} as executable`);
+    })
   });
 };
 
