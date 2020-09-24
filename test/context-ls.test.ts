@@ -9,7 +9,7 @@ import { ServiceError } from '@grpc/grpc-js';
 describe('SDK', () => {
   let proc;
 
-  let cli = path.resolve('docker-linux-amd64');
+  let cli = path.resolve('docker');
   if (!fs.existsSync(cli)) {
     cli = 'docker';
   }
