@@ -283,6 +283,48 @@ export namespace StopResponse {
     }
 }
 
+export class KillRequest extends jspb.Message { 
+    getId(): string;
+    setId(value: string): KillRequest;
+
+    getSignal(): string;
+    setSignal(value: string): KillRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): KillRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: KillRequest): KillRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: KillRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): KillRequest;
+    static deserializeBinaryFromReader(message: KillRequest, reader: jspb.BinaryReader): KillRequest;
+}
+
+export namespace KillRequest {
+    export type AsObject = {
+        id: string,
+        signal: string,
+    }
+}
+
+export class KillResponse extends jspb.Message { 
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): KillResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: KillResponse): KillResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: KillResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): KillResponse;
+    static deserializeBinaryFromReader(message: KillResponse, reader: jspb.BinaryReader): KillResponse;
+}
+
+export namespace KillResponse {
+    export type AsObject = {
+    }
+}
+
 export class RunRequest extends jspb.Message { 
     getId(): string;
     setId(value: string): RunRequest;

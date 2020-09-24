@@ -2,7 +2,7 @@
 
 // Original file comments:
 //
-//  Copyright 2020 Docker, Inc.
+//  Copyright 2020 Docker Compose CLI authors
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -84,6 +84,28 @@ function serialize_com_docker_api_protos_containers_v1_InspectResponse(arg) {
 
 function deserialize_com_docker_api_protos_containers_v1_InspectResponse(buffer_arg) {
   return containers_v1_containers_pb.InspectResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_com_docker_api_protos_containers_v1_KillRequest(arg) {
+  if (!(arg instanceof containers_v1_containers_pb.KillRequest)) {
+    throw new Error('Expected argument of type com.docker.api.protos.containers.v1.KillRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_com_docker_api_protos_containers_v1_KillRequest(buffer_arg) {
+  return containers_v1_containers_pb.KillRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_com_docker_api_protos_containers_v1_KillResponse(arg) {
+  if (!(arg instanceof containers_v1_containers_pb.KillResponse)) {
+    throw new Error('Expected argument of type com.docker.api.protos.containers.v1.KillResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_com_docker_api_protos_containers_v1_KillResponse(buffer_arg) {
+  return containers_v1_containers_pb.KillResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_com_docker_api_protos_containers_v1_ListRequest(arg) {
@@ -230,6 +252,17 @@ var ContainersService = exports.ContainersService = {
     requestDeserialize: deserialize_com_docker_api_protos_containers_v1_StopRequest,
     responseSerialize: serialize_com_docker_api_protos_containers_v1_StopResponse,
     responseDeserialize: deserialize_com_docker_api_protos_containers_v1_StopResponse,
+  },
+  kill: {
+    path: '/com.docker.api.protos.containers.v1.Containers/Kill',
+    requestStream: false,
+    responseStream: false,
+    requestType: containers_v1_containers_pb.KillRequest,
+    responseType: containers_v1_containers_pb.KillResponse,
+    requestSerialize: serialize_com_docker_api_protos_containers_v1_KillRequest,
+    requestDeserialize: deserialize_com_docker_api_protos_containers_v1_KillRequest,
+    responseSerialize: serialize_com_docker_api_protos_containers_v1_KillResponse,
+    responseDeserialize: deserialize_com_docker_api_protos_containers_v1_KillResponse,
   },
   run: {
     path: '/com.docker.api.protos.containers.v1.Containers/Run',
