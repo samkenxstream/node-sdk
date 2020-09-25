@@ -12,6 +12,7 @@ interface IContainersService extends grpc.ServiceDefinition<grpc.UntypedServiceI
     list: IContainersService_IList;
     start: IContainersService_IStart;
     stop: IContainersService_IStop;
+    kill: IContainersService_IKill;
     run: IContainersService_IRun;
     exec: IContainersService_IExec;
     logs: IContainersService_ILogs;
@@ -45,6 +46,15 @@ interface IContainersService_IStop extends grpc.MethodDefinition<containers_v1_c
     requestDeserialize: grpc.deserialize<containers_v1_containers_pb.StopRequest>;
     responseSerialize: grpc.serialize<containers_v1_containers_pb.StopResponse>;
     responseDeserialize: grpc.deserialize<containers_v1_containers_pb.StopResponse>;
+}
+interface IContainersService_IKill extends grpc.MethodDefinition<containers_v1_containers_pb.KillRequest, containers_v1_containers_pb.KillResponse> {
+    path: string; // "/com.docker.api.protos.containers.v1.Containers/Kill"
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<containers_v1_containers_pb.KillRequest>;
+    requestDeserialize: grpc.deserialize<containers_v1_containers_pb.KillRequest>;
+    responseSerialize: grpc.serialize<containers_v1_containers_pb.KillResponse>;
+    responseDeserialize: grpc.deserialize<containers_v1_containers_pb.KillResponse>;
 }
 interface IContainersService_IRun extends grpc.MethodDefinition<containers_v1_containers_pb.RunRequest, containers_v1_containers_pb.RunResponse> {
     path: string; // "/com.docker.api.protos.containers.v1.Containers/Run"
@@ -98,6 +108,7 @@ export interface IContainersServer {
     list: grpc.handleUnaryCall<containers_v1_containers_pb.ListRequest, containers_v1_containers_pb.ListResponse>;
     start: grpc.handleUnaryCall<containers_v1_containers_pb.StartRequest, containers_v1_containers_pb.StartResponse>;
     stop: grpc.handleUnaryCall<containers_v1_containers_pb.StopRequest, containers_v1_containers_pb.StopResponse>;
+    kill: grpc.handleUnaryCall<containers_v1_containers_pb.KillRequest, containers_v1_containers_pb.KillResponse>;
     run: grpc.handleUnaryCall<containers_v1_containers_pb.RunRequest, containers_v1_containers_pb.RunResponse>;
     exec: grpc.handleUnaryCall<containers_v1_containers_pb.ExecRequest, containers_v1_containers_pb.ExecResponse>;
     logs: grpc.handleServerStreamingCall<containers_v1_containers_pb.LogsRequest, containers_v1_containers_pb.LogsResponse>;
@@ -115,6 +126,9 @@ export interface IContainersClient {
     stop(request: containers_v1_containers_pb.StopRequest, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.StopResponse) => void): grpc.ClientUnaryCall;
     stop(request: containers_v1_containers_pb.StopRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.StopResponse) => void): grpc.ClientUnaryCall;
     stop(request: containers_v1_containers_pb.StopRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.StopResponse) => void): grpc.ClientUnaryCall;
+    kill(request: containers_v1_containers_pb.KillRequest, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.KillResponse) => void): grpc.ClientUnaryCall;
+    kill(request: containers_v1_containers_pb.KillRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.KillResponse) => void): grpc.ClientUnaryCall;
+    kill(request: containers_v1_containers_pb.KillRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.KillResponse) => void): grpc.ClientUnaryCall;
     run(request: containers_v1_containers_pb.RunRequest, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.RunResponse) => void): grpc.ClientUnaryCall;
     run(request: containers_v1_containers_pb.RunRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.RunResponse) => void): grpc.ClientUnaryCall;
     run(request: containers_v1_containers_pb.RunRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.RunResponse) => void): grpc.ClientUnaryCall;
@@ -142,6 +156,9 @@ export class ContainersClient extends grpc.Client implements IContainersClient {
     public stop(request: containers_v1_containers_pb.StopRequest, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.StopResponse) => void): grpc.ClientUnaryCall;
     public stop(request: containers_v1_containers_pb.StopRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.StopResponse) => void): grpc.ClientUnaryCall;
     public stop(request: containers_v1_containers_pb.StopRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.StopResponse) => void): grpc.ClientUnaryCall;
+    public kill(request: containers_v1_containers_pb.KillRequest, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.KillResponse) => void): grpc.ClientUnaryCall;
+    public kill(request: containers_v1_containers_pb.KillRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.KillResponse) => void): grpc.ClientUnaryCall;
+    public kill(request: containers_v1_containers_pb.KillRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.KillResponse) => void): grpc.ClientUnaryCall;
     public run(request: containers_v1_containers_pb.RunRequest, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.RunResponse) => void): grpc.ClientUnaryCall;
     public run(request: containers_v1_containers_pb.RunRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.RunResponse) => void): grpc.ClientUnaryCall;
     public run(request: containers_v1_containers_pb.RunRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: containers_v1_containers_pb.RunResponse) => void): grpc.ClientUnaryCall;
