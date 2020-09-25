@@ -19,9 +19,7 @@ import * as path from 'path';
 import { Readable } from 'stream';
 import { Octokit } from '@octokit/rest';
 
-const octokit = new Octokit({
-  auth: process.env.DOCKER_GITHUB_TOKEN,
-});
+const octokit = new Octokit({});
 
 const get = async (p: string) => {
   try {

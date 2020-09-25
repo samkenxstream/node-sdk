@@ -57,7 +57,6 @@ const download = async () => {
     owner: 'docker',
     repo: 'compose-cli',
     asset_id: linuxAsset.id,
-    access_token: process.env.DOCKER_GITHUB_TOKEN,
   });
 
   const response = await request(options);
