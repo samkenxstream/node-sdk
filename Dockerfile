@@ -38,13 +38,9 @@ FROM base AS test
 CMD ["yarn", "test"]
 VOLUME ["/var/run/docker.sock"]
 COPY --from=docker /usr/local/bin/docker /usr/local/bin/com.docker.cli
-ARG DOCKER_GITHUB_TOKEN
-ENV DOCKER_GITHUB_TOKEN=${DOCKER_GITHUB_TOKEN}
 RUN yarn download-cli
 
 FROM base AS download-protos
-ARG DOCKER_GITHUB_TOKEN
-ENV DOCKER_GITHUB_TOKEN=${DOCKER_GITHUB_TOKEN}
 RUN yarn download-protos
 RUN ./protos.sh
 
