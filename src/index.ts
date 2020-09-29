@@ -18,6 +18,7 @@ import { homedir, platform } from 'os';
 
 import { credentials } from '@grpc/grpc-js';
 import { ContainersClient } from './protos/containers/v1/containers_grpc_pb';
+import { VolumesClient } from './protos/volumes/v1/volumes_grpc_pb';
 import { ContextsClient } from './protos/contexts/v1/contexts_grpc_pb';
 import { ComposeClient } from './protos/compose/v1/compose_grpc_pb';
 import { StreamingClient } from './protos/streams/v1/streams_grpc_pb';
@@ -28,6 +29,12 @@ if (platform() !== 'win32') {
   addr = `unix://${homeDir}/.docker/run/docker-cli-api.sock`;
 }
 export class Containers extends ContainersClient {
+  constructor(address: string = addr) {
+    super(address, credentials.createInsecure());
+  }
+}
+
+export class Volumes extends VolumesClient {
   constructor(address: string = addr) {
     super(address, credentials.createInsecure());
   }
