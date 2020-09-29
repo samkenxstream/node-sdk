@@ -21,6 +21,7 @@ node_modules/.bin/grpc_tools_node_protoc \
     src/protos/contexts/v1/*.proto \
     src/protos/containers/v1/*.proto \
     src/protos/compose/v1/*.proto \
+    src/protos/volumes/v1/*.proto \
     src/protos/streams/v1/*.proto
 
 # generate d.ts codes
@@ -31,4 +32,5 @@ node_modules/.bin/grpc_tools_node_protoc \
     src/protos/contexts/v1/*.proto \
     src/protos/containers/v1/*.proto \
     src/protos/compose/v1/*.proto \
+    src/protos/volumes/v1/*.proto \
     src/protos/streams/v1/*.proto
