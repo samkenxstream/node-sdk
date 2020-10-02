@@ -355,6 +355,16 @@ export class RunRequest extends jspb.Message {
     getRestartPolicyCondition(): string;
     setRestartPolicyCondition(value: string): RunRequest;
 
+    clearCommandList(): void;
+    getCommandList(): Array<string>;
+    setCommandList(value: Array<string>): RunRequest;
+    addCommand(value: string, index?: number): string;
+
+    clearEnvironmentList(): void;
+    getEnvironmentList(): Array<string>;
+    setEnvironmentList(value: Array<string>): RunRequest;
+    addEnvironment(value: string, index?: number): string;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RunRequest.AsObject;
@@ -377,6 +387,8 @@ export namespace RunRequest {
         memoryLimit: number,
         cpuLimit: number,
         restartPolicyCondition: string,
+        commandList: Array<string>,
+        environmentList: Array<string>,
     }
 }
 
