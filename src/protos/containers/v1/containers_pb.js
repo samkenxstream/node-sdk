@@ -2542,7 +2542,7 @@ proto.com.docker.api.protos.containers.v1.KillResponse.serializeBinaryToWriter =
  * @private {!Array<number>}
  * @const
  */
-proto.com.docker.api.protos.containers.v1.RunRequest.repeatedFields_ = [3,5];
+proto.com.docker.api.protos.containers.v1.RunRequest.repeatedFields_ = [3,5,9,10];
 
 
 
@@ -2583,7 +2583,9 @@ proto.com.docker.api.protos.containers.v1.RunRequest.toObject = function(include
     volumesList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f,
     memoryLimit: jspb.Message.getFieldWithDefault(msg, 6, 0),
     cpuLimit: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    restartPolicyCondition: jspb.Message.getFieldWithDefault(msg, 8, "")
+    restartPolicyCondition: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    commandList: (f = jspb.Message.getRepeatedField(msg, 9)) == null ? undefined : f,
+    environmentList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -2654,6 +2656,14 @@ proto.com.docker.api.protos.containers.v1.RunRequest.deserializeBinaryFromReader
     case 8:
       var value = /** @type {string} */ (reader.readString());
       msg.setRestartPolicyCondition(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addCommand(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addEnvironment(value);
       break;
     default:
       reader.skipField();
@@ -2735,6 +2745,20 @@ proto.com.docker.api.protos.containers.v1.RunRequest.serializeBinaryToWriter = f
   if (f.length > 0) {
     writer.writeString(
       8,
+      f
+    );
+  }
+  f = message.getCommandList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      9,
+      f
+    );
+  }
+  f = message.getEnvironmentList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      10,
       f
     );
   }
@@ -2925,6 +2949,80 @@ proto.com.docker.api.protos.containers.v1.RunRequest.prototype.getRestartPolicyC
  */
 proto.com.docker.api.protos.containers.v1.RunRequest.prototype.setRestartPolicyCondition = function(value) {
   return jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * repeated string command = 9;
+ * @return {!Array<string>}
+ */
+proto.com.docker.api.protos.containers.v1.RunRequest.prototype.getCommandList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 9));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.com.docker.api.protos.containers.v1.RunRequest} returns this
+ */
+proto.com.docker.api.protos.containers.v1.RunRequest.prototype.setCommandList = function(value) {
+  return jspb.Message.setField(this, 9, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.com.docker.api.protos.containers.v1.RunRequest} returns this
+ */
+proto.com.docker.api.protos.containers.v1.RunRequest.prototype.addCommand = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 9, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.com.docker.api.protos.containers.v1.RunRequest} returns this
+ */
+proto.com.docker.api.protos.containers.v1.RunRequest.prototype.clearCommandList = function() {
+  return this.setCommandList([]);
+};
+
+
+/**
+ * repeated string environment = 10;
+ * @return {!Array<string>}
+ */
+proto.com.docker.api.protos.containers.v1.RunRequest.prototype.getEnvironmentList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 10));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.com.docker.api.protos.containers.v1.RunRequest} returns this
+ */
+proto.com.docker.api.protos.containers.v1.RunRequest.prototype.setEnvironmentList = function(value) {
+  return jspb.Message.setField(this, 10, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.com.docker.api.protos.containers.v1.RunRequest} returns this
+ */
+proto.com.docker.api.protos.containers.v1.RunRequest.prototype.addEnvironment = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 10, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.com.docker.api.protos.containers.v1.RunRequest} returns this
+ */
+proto.com.docker.api.protos.containers.v1.RunRequest.prototype.clearEnvironmentList = function() {
+  return this.setEnvironmentList([]);
 };
 
 
