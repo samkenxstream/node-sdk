@@ -87,6 +87,12 @@ export class Container extends jspb.Message {
     setRestartPolicyCondition(value: string): Container;
 
 
+    hasHostConfig(): boolean;
+    clearHostConfig(): void;
+    getHostConfig(): HostConfig | undefined;
+    setHostConfig(value?: HostConfig): Container;
+
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Container.AsObject;
     static toObject(includeInstance: boolean, msg: Container): Container.AsObject;
@@ -113,6 +119,44 @@ export namespace Container {
         cpuLimit: number,
         platform: string,
         restartPolicyCondition: string,
+        hostConfig?: HostConfig.AsObject,
+    }
+}
+
+export class HostConfig extends jspb.Message { 
+    getMemoryReservation(): number;
+    setMemoryReservation(value: number): HostConfig;
+
+    getMemoryLimit(): number;
+    setMemoryLimit(value: number): HostConfig;
+
+    getCpuReservation(): number;
+    setCpuReservation(value: number): HostConfig;
+
+    getCpuLimit(): number;
+    setCpuLimit(value: number): HostConfig;
+
+    getRestartPolicy(): string;
+    setRestartPolicy(value: string): HostConfig;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): HostConfig.AsObject;
+    static toObject(includeInstance: boolean, msg: HostConfig): HostConfig.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: HostConfig, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): HostConfig;
+    static deserializeBinaryFromReader(message: HostConfig, reader: jspb.BinaryReader): HostConfig;
+}
+
+export namespace HostConfig {
+    export type AsObject = {
+        memoryReservation: number,
+        memoryLimit: number,
+        cpuReservation: number,
+        cpuLimit: number,
+        restartPolicy: string,
     }
 }
 
