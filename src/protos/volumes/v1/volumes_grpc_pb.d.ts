@@ -13,6 +13,7 @@ interface IVolumesService extends grpc.ServiceDefinition<grpc.UntypedServiceImpl
     volumesCreate: IVolumesService_IVolumesCreate;
     volumesList: IVolumesService_IVolumesList;
     volumesDelete: IVolumesService_IVolumesDelete;
+    volumesInspect: IVolumesService_IVolumesInspect;
 }
 
 interface IVolumesService_IVolumesCreate extends grpc.MethodDefinition<volumes_v1_volumes_pb.VolumesCreateRequest, volumes_v1_volumes_pb.VolumesCreateResponse> {
@@ -42,6 +43,15 @@ interface IVolumesService_IVolumesDelete extends grpc.MethodDefinition<volumes_v
     responseSerialize: grpc.serialize<volumes_v1_volumes_pb.VolumesDeleteResponse>;
     responseDeserialize: grpc.deserialize<volumes_v1_volumes_pb.VolumesDeleteResponse>;
 }
+interface IVolumesService_IVolumesInspect extends grpc.MethodDefinition<volumes_v1_volumes_pb.VolumesInspectRequest, volumes_v1_volumes_pb.VolumesInspectResponse> {
+    path: string; // "/com.docker.api.protos.volumes.v1.Volumes/VolumesInspect"
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<volumes_v1_volumes_pb.VolumesInspectRequest>;
+    requestDeserialize: grpc.deserialize<volumes_v1_volumes_pb.VolumesInspectRequest>;
+    responseSerialize: grpc.serialize<volumes_v1_volumes_pb.VolumesInspectResponse>;
+    responseDeserialize: grpc.deserialize<volumes_v1_volumes_pb.VolumesInspectResponse>;
+}
 
 export const VolumesService: IVolumesService;
 
@@ -49,6 +59,7 @@ export interface IVolumesServer {
     volumesCreate: grpc.handleUnaryCall<volumes_v1_volumes_pb.VolumesCreateRequest, volumes_v1_volumes_pb.VolumesCreateResponse>;
     volumesList: grpc.handleUnaryCall<volumes_v1_volumes_pb.VolumesListRequest, volumes_v1_volumes_pb.VolumesListResponse>;
     volumesDelete: grpc.handleUnaryCall<volumes_v1_volumes_pb.VolumesDeleteRequest, volumes_v1_volumes_pb.VolumesDeleteResponse>;
+    volumesInspect: grpc.handleUnaryCall<volumes_v1_volumes_pb.VolumesInspectRequest, volumes_v1_volumes_pb.VolumesInspectResponse>;
 }
 
 export interface IVolumesClient {
@@ -61,6 +72,9 @@ export interface IVolumesClient {
     volumesDelete(request: volumes_v1_volumes_pb.VolumesDeleteRequest, callback: (error: grpc.ServiceError | null, response: volumes_v1_volumes_pb.VolumesDeleteResponse) => void): grpc.ClientUnaryCall;
     volumesDelete(request: volumes_v1_volumes_pb.VolumesDeleteRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: volumes_v1_volumes_pb.VolumesDeleteResponse) => void): grpc.ClientUnaryCall;
     volumesDelete(request: volumes_v1_volumes_pb.VolumesDeleteRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: volumes_v1_volumes_pb.VolumesDeleteResponse) => void): grpc.ClientUnaryCall;
+    volumesInspect(request: volumes_v1_volumes_pb.VolumesInspectRequest, callback: (error: grpc.ServiceError | null, response: volumes_v1_volumes_pb.VolumesInspectResponse) => void): grpc.ClientUnaryCall;
+    volumesInspect(request: volumes_v1_volumes_pb.VolumesInspectRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: volumes_v1_volumes_pb.VolumesInspectResponse) => void): grpc.ClientUnaryCall;
+    volumesInspect(request: volumes_v1_volumes_pb.VolumesInspectRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: volumes_v1_volumes_pb.VolumesInspectResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class VolumesClient extends grpc.Client implements IVolumesClient {
@@ -74,4 +88,7 @@ export class VolumesClient extends grpc.Client implements IVolumesClient {
     public volumesDelete(request: volumes_v1_volumes_pb.VolumesDeleteRequest, callback: (error: grpc.ServiceError | null, response: volumes_v1_volumes_pb.VolumesDeleteResponse) => void): grpc.ClientUnaryCall;
     public volumesDelete(request: volumes_v1_volumes_pb.VolumesDeleteRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: volumes_v1_volumes_pb.VolumesDeleteResponse) => void): grpc.ClientUnaryCall;
     public volumesDelete(request: volumes_v1_volumes_pb.VolumesDeleteRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: volumes_v1_volumes_pb.VolumesDeleteResponse) => void): grpc.ClientUnaryCall;
+    public volumesInspect(request: volumes_v1_volumes_pb.VolumesInspectRequest, callback: (error: grpc.ServiceError | null, response: volumes_v1_volumes_pb.VolumesInspectResponse) => void): grpc.ClientUnaryCall;
+    public volumesInspect(request: volumes_v1_volumes_pb.VolumesInspectRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: volumes_v1_volumes_pb.VolumesInspectResponse) => void): grpc.ClientUnaryCall;
+    public volumesInspect(request: volumes_v1_volumes_pb.VolumesInspectRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: volumes_v1_volumes_pb.VolumesInspectResponse) => void): grpc.ClientUnaryCall;
 }

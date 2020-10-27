@@ -65,6 +65,28 @@ function deserialize_com_docker_api_protos_volumes_v1_VolumesDeleteResponse(buff
   return volumes_v1_volumes_pb.VolumesDeleteResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_com_docker_api_protos_volumes_v1_VolumesInspectRequest(arg) {
+  if (!(arg instanceof volumes_v1_volumes_pb.VolumesInspectRequest)) {
+    throw new Error('Expected argument of type com.docker.api.protos.volumes.v1.VolumesInspectRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_com_docker_api_protos_volumes_v1_VolumesInspectRequest(buffer_arg) {
+  return volumes_v1_volumes_pb.VolumesInspectRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_com_docker_api_protos_volumes_v1_VolumesInspectResponse(arg) {
+  if (!(arg instanceof volumes_v1_volumes_pb.VolumesInspectResponse)) {
+    throw new Error('Expected argument of type com.docker.api.protos.volumes.v1.VolumesInspectResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_com_docker_api_protos_volumes_v1_VolumesInspectResponse(buffer_arg) {
+  return volumes_v1_volumes_pb.VolumesInspectResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_com_docker_api_protos_volumes_v1_VolumesListRequest(arg) {
   if (!(arg instanceof volumes_v1_volumes_pb.VolumesListRequest)) {
     throw new Error('Expected argument of type com.docker.api.protos.volumes.v1.VolumesListRequest');
@@ -121,6 +143,17 @@ var VolumesService = exports.VolumesService = {
     requestDeserialize: deserialize_com_docker_api_protos_volumes_v1_VolumesDeleteRequest,
     responseSerialize: serialize_com_docker_api_protos_volumes_v1_VolumesDeleteResponse,
     responseDeserialize: deserialize_com_docker_api_protos_volumes_v1_VolumesDeleteResponse,
+  },
+  volumesInspect: {
+    path: '/com.docker.api.protos.volumes.v1.Volumes/VolumesInspect',
+    requestStream: false,
+    responseStream: false,
+    requestType: volumes_v1_volumes_pb.VolumesInspectRequest,
+    responseType: volumes_v1_volumes_pb.VolumesInspectResponse,
+    requestSerialize: serialize_com_docker_api_protos_volumes_v1_VolumesInspectRequest,
+    requestDeserialize: deserialize_com_docker_api_protos_volumes_v1_VolumesInspectRequest,
+    responseSerialize: serialize_com_docker_api_protos_volumes_v1_VolumesInspectResponse,
+    responseDeserialize: deserialize_com_docker_api_protos_volumes_v1_VolumesInspectResponse,
   },
 };
 

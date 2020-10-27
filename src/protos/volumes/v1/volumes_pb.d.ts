@@ -192,3 +192,48 @@ export namespace VolumesDeleteResponse {
     export type AsObject = {
     }
 }
+
+export class VolumesInspectRequest extends jspb.Message { 
+    getId(): string;
+    setId(value: string): VolumesInspectRequest;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): VolumesInspectRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: VolumesInspectRequest): VolumesInspectRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: VolumesInspectRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): VolumesInspectRequest;
+    static deserializeBinaryFromReader(message: VolumesInspectRequest, reader: jspb.BinaryReader): VolumesInspectRequest;
+}
+
+export namespace VolumesInspectRequest {
+    export type AsObject = {
+        id: string,
+    }
+}
+
+export class VolumesInspectResponse extends jspb.Message { 
+
+    hasVolume(): boolean;
+    clearVolume(): void;
+    getVolume(): Volume | undefined;
+    setVolume(value?: Volume): VolumesInspectResponse;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): VolumesInspectResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: VolumesInspectResponse): VolumesInspectResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: VolumesInspectResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): VolumesInspectResponse;
+    static deserializeBinaryFromReader(message: VolumesInspectResponse, reader: jspb.BinaryReader): VolumesInspectResponse;
+}
+
+export namespace VolumesInspectResponse {
+    export type AsObject = {
+        volume?: Volume.AsObject,
+    }
+}
