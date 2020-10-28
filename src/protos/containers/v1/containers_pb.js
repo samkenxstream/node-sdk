@@ -739,15 +739,12 @@ proto.com.docker.api.protos.containers.v1.Container.toObject = function(includeI
     command: jspb.Message.getFieldWithDefault(msg, 4, ""),
     cpuTime: jspb.Message.getFieldWithDefault(msg, 5, 0),
     memoryUsage: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    memoryLimit: jspb.Message.getFieldWithDefault(msg, 7, 0),
     pidsCurrent: jspb.Message.getFieldWithDefault(msg, 8, 0),
     pidsLimit: jspb.Message.getFieldWithDefault(msg, 9, 0),
     labelsList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f,
     portsList: jspb.Message.toObjectList(msg.getPortsList(),
     proto.com.docker.api.protos.containers.v1.Port.toObject, includeInstance),
-    cpuLimit: jspb.Message.getFieldWithDefault(msg, 12, 0),
     platform: jspb.Message.getFieldWithDefault(msg, 13, ""),
-    restartPolicyCondition: jspb.Message.getFieldWithDefault(msg, 14, ""),
     hostConfig: (f = msg.getHostConfig()) && proto.com.docker.api.protos.containers.v1.HostConfig.toObject(includeInstance, f)
   };
 
@@ -809,10 +806,6 @@ proto.com.docker.api.protos.containers.v1.Container.deserializeBinaryFromReader 
       var value = /** @type {number} */ (reader.readUint64());
       msg.setMemoryUsage(value);
       break;
-    case 7:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setMemoryLimit(value);
-      break;
     case 8:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setPidsCurrent(value);
@@ -830,17 +823,9 @@ proto.com.docker.api.protos.containers.v1.Container.deserializeBinaryFromReader 
       reader.readMessage(value,proto.com.docker.api.protos.containers.v1.Port.deserializeBinaryFromReader);
       msg.addPorts(value);
       break;
-    case 12:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setCpuLimit(value);
-      break;
     case 13:
       var value = /** @type {string} */ (reader.readString());
       msg.setPlatform(value);
-      break;
-    case 14:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setRestartPolicyCondition(value);
       break;
     case 15:
       var value = new proto.com.docker.api.protos.containers.v1.HostConfig;
@@ -918,13 +903,6 @@ proto.com.docker.api.protos.containers.v1.Container.serializeBinaryToWriter = fu
       f
     );
   }
-  f = message.getMemoryLimit();
-  if (f !== 0) {
-    writer.writeUint64(
-      7,
-      f
-    );
-  }
   f = message.getPidsCurrent();
   if (f !== 0) {
     writer.writeUint64(
@@ -954,24 +932,10 @@ proto.com.docker.api.protos.containers.v1.Container.serializeBinaryToWriter = fu
       proto.com.docker.api.protos.containers.v1.Port.serializeBinaryToWriter
     );
   }
-  f = message.getCpuLimit();
-  if (f !== 0) {
-    writer.writeUint64(
-      12,
-      f
-    );
-  }
   f = message.getPlatform();
   if (f.length > 0) {
     writer.writeString(
       13,
-      f
-    );
-  }
-  f = message.getRestartPolicyCondition();
-  if (f.length > 0) {
-    writer.writeString(
-      14,
       f
     );
   }
@@ -1095,24 +1059,6 @@ proto.com.docker.api.protos.containers.v1.Container.prototype.setMemoryUsage = f
 
 
 /**
- * optional uint64 memory_limit = 7;
- * @return {number}
- */
-proto.com.docker.api.protos.containers.v1.Container.prototype.getMemoryLimit = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.com.docker.api.protos.containers.v1.Container} returns this
- */
-proto.com.docker.api.protos.containers.v1.Container.prototype.setMemoryLimit = function(value) {
-  return jspb.Message.setProto3IntField(this, 7, value);
-};
-
-
-/**
  * optional uint64 pids_current = 8;
  * @return {number}
  */
@@ -1224,24 +1170,6 @@ proto.com.docker.api.protos.containers.v1.Container.prototype.clearPortsList = f
 
 
 /**
- * optional uint64 cpu_limit = 12;
- * @return {number}
- */
-proto.com.docker.api.protos.containers.v1.Container.prototype.getCpuLimit = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.com.docker.api.protos.containers.v1.Container} returns this
- */
-proto.com.docker.api.protos.containers.v1.Container.prototype.setCpuLimit = function(value) {
-  return jspb.Message.setProto3IntField(this, 12, value);
-};
-
-
-/**
  * optional string platform = 13;
  * @return {string}
  */
@@ -1256,24 +1184,6 @@ proto.com.docker.api.protos.containers.v1.Container.prototype.getPlatform = func
  */
 proto.com.docker.api.protos.containers.v1.Container.prototype.setPlatform = function(value) {
   return jspb.Message.setProto3StringField(this, 13, value);
-};
-
-
-/**
- * optional string restart_policy_condition = 14;
- * @return {string}
- */
-proto.com.docker.api.protos.containers.v1.Container.prototype.getRestartPolicyCondition = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.com.docker.api.protos.containers.v1.Container} returns this
- */
-proto.com.docker.api.protos.containers.v1.Container.prototype.setRestartPolicyCondition = function(value) {
-  return jspb.Message.setProto3StringField(this, 14, value);
 };
 
 

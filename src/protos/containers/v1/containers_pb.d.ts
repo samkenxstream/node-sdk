@@ -58,9 +58,6 @@ export class Container extends jspb.Message {
     getMemoryUsage(): number;
     setMemoryUsage(value: number): Container;
 
-    getMemoryLimit(): number;
-    setMemoryLimit(value: number): Container;
-
     getPidsCurrent(): number;
     setPidsCurrent(value: number): Container;
 
@@ -77,14 +74,8 @@ export class Container extends jspb.Message {
     setPortsList(value: Array<Port>): Container;
     addPorts(value?: Port, index?: number): Port;
 
-    getCpuLimit(): number;
-    setCpuLimit(value: number): Container;
-
     getPlatform(): string;
     setPlatform(value: string): Container;
-
-    getRestartPolicyCondition(): string;
-    setRestartPolicyCondition(value: string): Container;
 
 
     hasHostConfig(): boolean;
@@ -111,14 +102,11 @@ export namespace Container {
         command: string,
         cpuTime: number,
         memoryUsage: number,
-        memoryLimit: number,
         pidsCurrent: number,
         pidsLimit: number,
         labelsList: Array<string>,
         portsList: Array<Port.AsObject>,
-        cpuLimit: number,
         platform: string,
-        restartPolicyCondition: string,
         hostConfig?: HostConfig.AsObject,
     }
 }
