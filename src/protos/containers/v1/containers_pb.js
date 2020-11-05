@@ -1260,7 +1260,8 @@ proto.com.docker.api.protos.containers.v1.HostConfig.toObject = function(include
     memoryLimit: jspb.Message.getFieldWithDefault(msg, 2, 0),
     cpuReservation: jspb.Message.getFieldWithDefault(msg, 3, 0),
     cpuLimit: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    restartPolicy: jspb.Message.getFieldWithDefault(msg, 5, "")
+    restartPolicy: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    autoRemove: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
   };
 
   if (includeInstance) {
@@ -1316,6 +1317,10 @@ proto.com.docker.api.protos.containers.v1.HostConfig.deserializeBinaryFromReader
     case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setRestartPolicy(value);
+      break;
+    case 6:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setAutoRemove(value);
       break;
     default:
       reader.skipField();
@@ -1378,6 +1383,13 @@ proto.com.docker.api.protos.containers.v1.HostConfig.serializeBinaryToWriter = f
   if (f.length > 0) {
     writer.writeString(
       5,
+      f
+    );
+  }
+  f = message.getAutoRemove();
+  if (f) {
+    writer.writeBool(
+      6,
       f
     );
   }
@@ -1471,6 +1483,24 @@ proto.com.docker.api.protos.containers.v1.HostConfig.prototype.getRestartPolicy 
  */
 proto.com.docker.api.protos.containers.v1.HostConfig.prototype.setRestartPolicy = function(value) {
   return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional bool auto_remove = 6;
+ * @return {boolean}
+ */
+proto.com.docker.api.protos.containers.v1.HostConfig.prototype.getAutoRemove = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 6, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.com.docker.api.protos.containers.v1.HostConfig} returns this
+ */
+proto.com.docker.api.protos.containers.v1.HostConfig.prototype.setAutoRemove = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 6, value);
 };
 
 
@@ -2818,7 +2848,8 @@ proto.com.docker.api.protos.containers.v1.RunRequest.toObject = function(include
     cpuLimit: jspb.Message.getFieldWithDefault(msg, 7, 0),
     restartPolicyCondition: jspb.Message.getFieldWithDefault(msg, 8, ""),
     commandList: (f = jspb.Message.getRepeatedField(msg, 9)) == null ? undefined : f,
-    environmentList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f
+    environmentList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f,
+    autoRemove: jspb.Message.getBooleanFieldWithDefault(msg, 11, false)
   };
 
   if (includeInstance) {
@@ -2897,6 +2928,10 @@ proto.com.docker.api.protos.containers.v1.RunRequest.deserializeBinaryFromReader
     case 10:
       var value = /** @type {string} */ (reader.readString());
       msg.addEnvironment(value);
+      break;
+    case 11:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setAutoRemove(value);
       break;
     default:
       reader.skipField();
@@ -2992,6 +3027,13 @@ proto.com.docker.api.protos.containers.v1.RunRequest.serializeBinaryToWriter = f
   if (f.length > 0) {
     writer.writeRepeatedString(
       10,
+      f
+    );
+  }
+  f = message.getAutoRemove();
+  if (f) {
+    writer.writeBool(
+      11,
       f
     );
   }
@@ -3256,6 +3298,24 @@ proto.com.docker.api.protos.containers.v1.RunRequest.prototype.addEnvironment = 
  */
 proto.com.docker.api.protos.containers.v1.RunRequest.prototype.clearEnvironmentList = function() {
   return this.setEnvironmentList([]);
+};
+
+
+/**
+ * optional bool auto_remove = 11;
+ * @return {boolean}
+ */
+proto.com.docker.api.protos.containers.v1.RunRequest.prototype.getAutoRemove = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 11, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.com.docker.api.protos.containers.v1.RunRequest} returns this
+ */
+proto.com.docker.api.protos.containers.v1.RunRequest.prototype.setAutoRemove = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 11, value);
 };
 
 

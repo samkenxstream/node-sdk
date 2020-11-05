@@ -127,6 +127,9 @@ export class HostConfig extends jspb.Message {
     getRestartPolicy(): string;
     setRestartPolicy(value: string): HostConfig;
 
+    getAutoRemove(): boolean;
+    setAutoRemove(value: boolean): HostConfig;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): HostConfig.AsObject;
@@ -145,6 +148,7 @@ export namespace HostConfig {
         cpuReservation: number,
         cpuLimit: number,
         restartPolicy: string,
+        autoRemove: boolean,
     }
 }
 
@@ -397,6 +401,9 @@ export class RunRequest extends jspb.Message {
     setEnvironmentList(value: Array<string>): RunRequest;
     addEnvironment(value: string, index?: number): string;
 
+    getAutoRemove(): boolean;
+    setAutoRemove(value: boolean): RunRequest;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RunRequest.AsObject;
@@ -421,6 +428,7 @@ export namespace RunRequest {
         restartPolicyCondition: string,
         commandList: Array<string>,
         environmentList: Array<string>,
+        autoRemove: boolean,
     }
 }
 
