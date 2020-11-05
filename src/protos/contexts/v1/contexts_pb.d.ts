@@ -16,6 +16,29 @@ export class Context extends jspb.Message {
     getCurrent(): boolean;
     setCurrent(value: boolean): Context;
 
+    getDescription(): string;
+    setDescription(value: string): Context;
+
+
+    hasDockerEndpoint(): boolean;
+    clearDockerEndpoint(): void;
+    getDockerEndpoint(): DockerEndpoint | undefined;
+    setDockerEndpoint(value?: DockerEndpoint): Context;
+
+
+    hasAciEndpoint(): boolean;
+    clearAciEndpoint(): void;
+    getAciEndpoint(): AciEndpoint | undefined;
+    setAciEndpoint(value?: AciEndpoint): Context;
+
+
+    hasEcsEndpoint(): boolean;
+    clearEcsEndpoint(): void;
+    getEcsEndpoint(): EcsEndpoint | undefined;
+    setEcsEndpoint(value?: EcsEndpoint): Context;
+
+
+    getEndpointCase(): Context.EndpointCase;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Context.AsObject;
@@ -32,6 +55,97 @@ export namespace Context {
         name: string,
         contexttype: string,
         current: boolean,
+        description: string,
+        dockerEndpoint?: DockerEndpoint.AsObject,
+        aciEndpoint?: AciEndpoint.AsObject,
+        ecsEndpoint?: EcsEndpoint.AsObject,
+    }
+
+    export enum EndpointCase {
+        ENDPOINT_NOT_SET = 0,
+    
+    DOCKER_ENDPOINT = 5,
+
+    ACI_ENDPOINT = 6,
+
+    ECS_ENDPOINT = 7,
+
+    }
+
+}
+
+export class DockerEndpoint extends jspb.Message { 
+    getHost(): string;
+    setHost(value: string): DockerEndpoint;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DockerEndpoint.AsObject;
+    static toObject(includeInstance: boolean, msg: DockerEndpoint): DockerEndpoint.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DockerEndpoint, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DockerEndpoint;
+    static deserializeBinaryFromReader(message: DockerEndpoint, reader: jspb.BinaryReader): DockerEndpoint;
+}
+
+export namespace DockerEndpoint {
+    export type AsObject = {
+        host: string,
+    }
+}
+
+export class AciEndpoint extends jspb.Message { 
+    getRegion(): string;
+    setRegion(value: string): AciEndpoint;
+
+    getResourceGroup(): string;
+    setResourceGroup(value: string): AciEndpoint;
+
+    getSubscriptionId(): string;
+    setSubscriptionId(value: string): AciEndpoint;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): AciEndpoint.AsObject;
+    static toObject(includeInstance: boolean, msg: AciEndpoint): AciEndpoint.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: AciEndpoint, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): AciEndpoint;
+    static deserializeBinaryFromReader(message: AciEndpoint, reader: jspb.BinaryReader): AciEndpoint;
+}
+
+export namespace AciEndpoint {
+    export type AsObject = {
+        region: string,
+        resourceGroup: string,
+        subscriptionId: string,
+    }
+}
+
+export class EcsEndpoint extends jspb.Message { 
+    getProfile(): string;
+    setProfile(value: string): EcsEndpoint;
+
+    getFromEnvironment(): boolean;
+    setFromEnvironment(value: boolean): EcsEndpoint;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): EcsEndpoint.AsObject;
+    static toObject(includeInstance: boolean, msg: EcsEndpoint): EcsEndpoint.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: EcsEndpoint, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): EcsEndpoint;
+    static deserializeBinaryFromReader(message: EcsEndpoint, reader: jspb.BinaryReader): EcsEndpoint;
+}
+
+export namespace EcsEndpoint {
+    export type AsObject = {
+        profile: string,
+        fromEnvironment: boolean,
     }
 }
 
