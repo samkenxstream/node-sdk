@@ -30,8 +30,13 @@ client.list(
     res.getContextsList().forEach((context) => {
       console.log(
         context.getName(),
+        context.getDescription(),
         context.getContexttype(),
-        context.getCurrent() ? '*' : ''
+        context.getCurrent() ? '*' : '',
+        context.hasDockerEndpoint()? 'host:' + context.getDockerEndpoint()?.getHost():'',
+        context.hasEcsEndpoint()? context.getEcsEndpoint()?.getProfile():'',
+        context.hasAciEndpoint()? context.getAciEndpoint()?.getResourceGroup():'',
+        context.hasAciEndpoint()? context.getAciEndpoint()?.getRegion():''
       );
     });
   }
