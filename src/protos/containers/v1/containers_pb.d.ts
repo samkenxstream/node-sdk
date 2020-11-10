@@ -84,6 +84,12 @@ export class Container extends jspb.Message {
     setHostConfig(value?: HostConfig): Container;
 
 
+    hasHealthcheck(): boolean;
+    clearHealthcheck(): void;
+    getHealthcheck(): Healthcheck | undefined;
+    setHealthcheck(value?: Healthcheck): Container;
+
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Container.AsObject;
     static toObject(includeInstance: boolean, msg: Container): Container.AsObject;
@@ -108,6 +114,7 @@ export namespace Container {
         portsList: Array<Port.AsObject>,
         platform: string,
         hostConfig?: HostConfig.AsObject,
+        healthcheck?: Healthcheck.AsObject,
     }
 }
 
@@ -149,6 +156,37 @@ export namespace HostConfig {
         cpuLimit: number,
         restartPolicy: string,
         autoRemove: boolean,
+    }
+}
+
+export class Healthcheck extends jspb.Message { 
+    getDisable(): boolean;
+    setDisable(value: boolean): Healthcheck;
+
+    clearTestList(): void;
+    getTestList(): Array<string>;
+    setTestList(value: Array<string>): Healthcheck;
+    addTest(value: string, index?: number): string;
+
+    getInterval(): number;
+    setInterval(value: number): Healthcheck;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Healthcheck.AsObject;
+    static toObject(includeInstance: boolean, msg: Healthcheck): Healthcheck.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: Healthcheck, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Healthcheck;
+    static deserializeBinaryFromReader(message: Healthcheck, reader: jspb.BinaryReader): Healthcheck;
+}
+
+export namespace Healthcheck {
+    export type AsObject = {
+        disable: boolean,
+        testList: Array<string>,
+        interval: number,
     }
 }
 
@@ -405,6 +443,12 @@ export class RunRequest extends jspb.Message {
     setAutoRemove(value: boolean): RunRequest;
 
 
+    hasHealthcheck(): boolean;
+    clearHealthcheck(): void;
+    getHealthcheck(): Healthcheck | undefined;
+    setHealthcheck(value?: Healthcheck): RunRequest;
+
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RunRequest.AsObject;
     static toObject(includeInstance: boolean, msg: RunRequest): RunRequest.AsObject;
@@ -429,6 +473,7 @@ export namespace RunRequest {
         commandList: Array<string>,
         environmentList: Array<string>,
         autoRemove: boolean,
+        healthcheck?: Healthcheck.AsObject,
     }
 }
 
