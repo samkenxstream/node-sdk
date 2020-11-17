@@ -42,6 +42,50 @@ function deserialize_com_docker_api_protos_compose_v1_ComposeDownResponse(buffer
   return compose_v1_compose_pb.ComposeDownResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_com_docker_api_protos_compose_v1_ComposeServicesRequest(arg) {
+  if (!(arg instanceof compose_v1_compose_pb.ComposeServicesRequest)) {
+    throw new Error('Expected argument of type com.docker.api.protos.compose.v1.ComposeServicesRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_com_docker_api_protos_compose_v1_ComposeServicesRequest(buffer_arg) {
+  return compose_v1_compose_pb.ComposeServicesRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_com_docker_api_protos_compose_v1_ComposeServicesResponse(arg) {
+  if (!(arg instanceof compose_v1_compose_pb.ComposeServicesResponse)) {
+    throw new Error('Expected argument of type com.docker.api.protos.compose.v1.ComposeServicesResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_com_docker_api_protos_compose_v1_ComposeServicesResponse(buffer_arg) {
+  return compose_v1_compose_pb.ComposeServicesResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_com_docker_api_protos_compose_v1_ComposeStacksRequest(arg) {
+  if (!(arg instanceof compose_v1_compose_pb.ComposeStacksRequest)) {
+    throw new Error('Expected argument of type com.docker.api.protos.compose.v1.ComposeStacksRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_com_docker_api_protos_compose_v1_ComposeStacksRequest(buffer_arg) {
+  return compose_v1_compose_pb.ComposeStacksRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_com_docker_api_protos_compose_v1_ComposeStacksResponse(arg) {
+  if (!(arg instanceof compose_v1_compose_pb.ComposeStacksResponse)) {
+    throw new Error('Expected argument of type com.docker.api.protos.compose.v1.ComposeStacksResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_com_docker_api_protos_compose_v1_ComposeStacksResponse(buffer_arg) {
+  return compose_v1_compose_pb.ComposeStacksResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_com_docker_api_protos_compose_v1_ComposeUpRequest(arg) {
   if (!(arg instanceof compose_v1_compose_pb.ComposeUpRequest)) {
     throw new Error('Expected argument of type com.docker.api.protos.compose.v1.ComposeUpRequest');
@@ -87,6 +131,28 @@ var ComposeService = exports.ComposeService = {
     requestDeserialize: deserialize_com_docker_api_protos_compose_v1_ComposeDownRequest,
     responseSerialize: serialize_com_docker_api_protos_compose_v1_ComposeDownResponse,
     responseDeserialize: deserialize_com_docker_api_protos_compose_v1_ComposeDownResponse,
+  },
+  stacks: {
+    path: '/com.docker.api.protos.compose.v1.Compose/Stacks',
+    requestStream: false,
+    responseStream: false,
+    requestType: compose_v1_compose_pb.ComposeStacksRequest,
+    responseType: compose_v1_compose_pb.ComposeStacksResponse,
+    requestSerialize: serialize_com_docker_api_protos_compose_v1_ComposeStacksRequest,
+    requestDeserialize: deserialize_com_docker_api_protos_compose_v1_ComposeStacksRequest,
+    responseSerialize: serialize_com_docker_api_protos_compose_v1_ComposeStacksResponse,
+    responseDeserialize: deserialize_com_docker_api_protos_compose_v1_ComposeStacksResponse,
+  },
+  services: {
+    path: '/com.docker.api.protos.compose.v1.Compose/Services',
+    requestStream: false,
+    responseStream: false,
+    requestType: compose_v1_compose_pb.ComposeServicesRequest,
+    responseType: compose_v1_compose_pb.ComposeServicesResponse,
+    requestSerialize: serialize_com_docker_api_protos_compose_v1_ComposeServicesRequest,
+    requestDeserialize: deserialize_com_docker_api_protos_compose_v1_ComposeServicesRequest,
+    responseSerialize: serialize_com_docker_api_protos_compose_v1_ComposeServicesResponse,
+    responseDeserialize: deserialize_com_docker_api_protos_compose_v1_ComposeServicesResponse,
   },
 };
 
