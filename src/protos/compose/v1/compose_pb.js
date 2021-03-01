@@ -956,7 +956,8 @@ proto.com.docker.api.protos.compose.v1.ComposeStacksRequest.prototype.toObject =
  */
 proto.com.docker.api.protos.compose.v1.ComposeStacksRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    projectname: jspb.Message.getFieldWithDefault(msg, 1, "")
+    projectname: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    all: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
   };
 
   if (includeInstance) {
@@ -997,6 +998,10 @@ proto.com.docker.api.protos.compose.v1.ComposeStacksRequest.deserializeBinaryFro
       var value = /** @type {string} */ (reader.readString());
       msg.setProjectname(value);
       break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setAll(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1033,6 +1038,13 @@ proto.com.docker.api.protos.compose.v1.ComposeStacksRequest.serializeBinaryToWri
       f
     );
   }
+  f = message.getAll();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -1051,6 +1063,24 @@ proto.com.docker.api.protos.compose.v1.ComposeStacksRequest.prototype.getProject
  */
 proto.com.docker.api.protos.compose.v1.ComposeStacksRequest.prototype.setProjectname = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional bool all = 2;
+ * @return {boolean}
+ */
+proto.com.docker.api.protos.compose.v1.ComposeStacksRequest.prototype.getAll = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.com.docker.api.protos.compose.v1.ComposeStacksRequest} returns this
+ */
+proto.com.docker.api.protos.compose.v1.ComposeStacksRequest.prototype.setAll = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
 };
 
 

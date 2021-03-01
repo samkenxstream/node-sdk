@@ -36,12 +36,13 @@ const get = async (p: string) => {
     }
 
     if (p.endsWith('.proto')) {
-      console.log(`Downloading ${response.data.path}`);
-      const dir = path.dirname(response.data.path);
+      const targetFile = response.data.path.replace("cli/server/protos", "protos")
+      console.log(`Downloading ${response.data.path} to ${targetFile}`);
+      const dir = path.dirname(targetFile);
       fs.mkdirSync(`src/${dir}`, { recursive: true });
       const buffer = Buffer.from(response.data.content, 'base64');
       const data = Readable.from(buffer.toString('ascii'));
-      data.pipe(fs.createWriteStream(`src/${p}`));
+      data.pipe(fs.createWriteStream(`src/${targetFile}`));
     }
   } catch (e) {
     console.error(e);
@@ -49,5 +50,5 @@ const get = async (p: string) => {
 };
 
 (async function () {
-  get('protos');
+  get('cli/server/protos');
 })();

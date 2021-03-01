@@ -448,6 +448,9 @@ export class RunRequest extends jspb.Message {
     getHealthcheck(): Healthcheck | undefined;
     setHealthcheck(value?: Healthcheck): RunRequest;
 
+    getPlatform(): string;
+    setPlatform(value: string): RunRequest;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RunRequest.AsObject;
@@ -474,6 +477,7 @@ export namespace RunRequest {
         environmentList: Array<string>,
         autoRemove: boolean,
         healthcheck?: Healthcheck.AsObject,
+        platform: string,
     }
 }
 
