@@ -114,6 +114,9 @@ export class ComposeStacksRequest extends jspb.Message {
     getProjectname(): string;
     setProjectname(value: string): ComposeStacksRequest;
 
+    getAll(): boolean;
+    setAll(value: boolean): ComposeStacksRequest;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): ComposeStacksRequest.AsObject;
@@ -128,6 +131,7 @@ export class ComposeStacksRequest extends jspb.Message {
 export namespace ComposeStacksRequest {
     export type AsObject = {
         projectname: string,
+        all: boolean,
     }
 }
 

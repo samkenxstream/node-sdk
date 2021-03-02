@@ -3139,7 +3139,8 @@ proto.com.docker.api.protos.containers.v1.RunRequest.toObject = function(include
     commandList: (f = jspb.Message.getRepeatedField(msg, 9)) == null ? undefined : f,
     environmentList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f,
     autoRemove: jspb.Message.getBooleanFieldWithDefault(msg, 11, false),
-    healthcheck: (f = msg.getHealthcheck()) && proto.com.docker.api.protos.containers.v1.Healthcheck.toObject(includeInstance, f)
+    healthcheck: (f = msg.getHealthcheck()) && proto.com.docker.api.protos.containers.v1.Healthcheck.toObject(includeInstance, f),
+    platform: jspb.Message.getFieldWithDefault(msg, 13, "")
   };
 
   if (includeInstance) {
@@ -3227,6 +3228,10 @@ proto.com.docker.api.protos.containers.v1.RunRequest.deserializeBinaryFromReader
       var value = new proto.com.docker.api.protos.containers.v1.Healthcheck;
       reader.readMessage(value,proto.com.docker.api.protos.containers.v1.Healthcheck.deserializeBinaryFromReader);
       msg.setHealthcheck(value);
+      break;
+    case 13:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPlatform(value);
       break;
     default:
       reader.skipField();
@@ -3338,6 +3343,13 @@ proto.com.docker.api.protos.containers.v1.RunRequest.serializeBinaryToWriter = f
       12,
       f,
       proto.com.docker.api.protos.containers.v1.Healthcheck.serializeBinaryToWriter
+    );
+  }
+  f = message.getPlatform();
+  if (f.length > 0) {
+    writer.writeString(
+      13,
+      f
     );
   }
 };
@@ -3656,6 +3668,24 @@ proto.com.docker.api.protos.containers.v1.RunRequest.prototype.clearHealthcheck 
  */
 proto.com.docker.api.protos.containers.v1.RunRequest.prototype.hasHealthcheck = function() {
   return jspb.Message.getField(this, 12) != null;
+};
+
+
+/**
+ * optional string platform = 13;
+ * @return {string}
+ */
+proto.com.docker.api.protos.containers.v1.RunRequest.prototype.getPlatform = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.com.docker.api.protos.containers.v1.RunRequest} returns this
+ */
+proto.com.docker.api.protos.containers.v1.RunRequest.prototype.setPlatform = function(value) {
+  return jspb.Message.setProto3StringField(this, 13, value);
 };
 
 
